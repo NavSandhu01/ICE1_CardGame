@@ -26,20 +26,14 @@ public class CardTrick {
             magicHand[i] = c;
         }
         
-        // --- Print the hand (for testing/debugging) ---
-        System.out.println("Magic Hand:");
+        // --- Print the hand ---
         for (Card c : magicHand) {
-            System.out.println(c);
+            System.out.println(c.getSuit() + " " + c.getValue());
         }
-        
-        // --- Lucky card (hard-coded) ---
-        Card luckyCard = new Card();
-        luckyCard.setValue(7);
-        luckyCard.setSuit("hearts");
         
         // --- Ask user for input ---
         Scanner input = new Scanner(System.in);
-        System.out.print("\nEnter a card value (1-13): ");
+        System.out.print("Enter a card value (1-13): ");
         int userValue = input.nextInt();
         System.out.print("Enter a suit (0=Hearts, 1=Diamonds, 2=Clubs, 3=Spades): ");
         int suitIndex = input.nextInt();
@@ -63,24 +57,5 @@ public class CardTrick {
         } else {
             System.out.println("Sorry, your card is not in the magic hand.");
         }
-        
-        // --- Search for lucky card ---
-        boolean luckyFound = false;
-        for (Card c : magicHand) {
-            if (c.getValue() == luckyCard.getValue() &&
-                c.getSuit().equalsIgnoreCase(luckyCard.getSuit())) {
-                luckyFound = true;
-                break;
-            }
-        }
-        
-        if (luckyFound) {
-            System.out.println("Lucky card (" + luckyCard.getValue() + " of " 
-                               + luckyCard.getSuit() + ") was found! YOU WIN!");
-        } else {
-            System.out.println("Lucky card (" + luckyCard.getValue() + " of " 
-                               + luckyCard.getSuit() + ") not in hand. Better luck next time!");
-        }
     }
 }
-
